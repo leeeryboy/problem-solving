@@ -1,0 +1,10 @@
+# 01타일
+
+n = int(input())
+
+list = [1, 2]
+
+for i in range(n - 2):
+    list.append((list[i] + list[i + 1]) % 15746)
+
+print(list[n - 1])
