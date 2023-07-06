@@ -1,0 +1,15 @@
+# 잃어버린 괄호
+
+text = input().split("+")
+text = [s.lstrip("0") for s in text]
+separator = "+"
+text = separator.join(text)
+text = text.split("-")
+text = [s.lstrip("0") for s in text]
+separator = "-"
+text = separator.join(text)
+
+text = text.replace("-", ")-(")
+text = "(" + text + ")"
+
+print(eval(text))
