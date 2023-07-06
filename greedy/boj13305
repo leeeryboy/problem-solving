@@ -1,0 +1,14 @@
+# 주유소
+
+n = int(input())
+distances = list(map(int, input().split()))
+prices = list(map(int, input().split()))
+
+min = 0
+
+for i in range(n - 1):
+    min += prices[i] * distances[i]
+    if prices[i] < prices[i + 1]:
+        prices[i + 1] = prices[i]
+
+print(min)
