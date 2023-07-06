@@ -1,0 +1,14 @@
+# ATM
+
+n = int(input())
+
+list = list(map(int, input().split()))
+
+list.sort()
+
+sum = 0
+
+for i in range(n):
+    sum += list[i] * (n - i)
+
+print(sum)
