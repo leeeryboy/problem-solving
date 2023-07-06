@@ -1,0 +1,24 @@
+# 회의실 배정
+
+import sys
+
+n = int(input())
+
+list = []
+for _ in range(n):
+    start, end = sys.stdin.readline().split()
+    start = int(start)
+    end = int(end)
+    list.append((start, end))
+
+list.sort(key=lambda x: (x[1], x[0]))
+
+last = -1
+num = 0
+
+for item in list:
+    if item[0] >= last:
+        num += 1
+        last = item[1]
+
+print(num)
