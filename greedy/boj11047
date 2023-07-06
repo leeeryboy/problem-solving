@@ -1,0 +1,16 @@
+# 동전 0
+
+n, k = input().split()
+n = int(n)
+k = int(k)
+list = []
+for _ in range(n):
+    list.append(int(input()))
+
+num = 0
+
+for i in range(n):
+    num += k // list[n - i - 1]
+    k = k % list[n - i - 1]
+
+print(num)
