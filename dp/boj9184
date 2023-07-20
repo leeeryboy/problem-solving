@@ -1,0 +1,33 @@
+# 신나는 함수 실행
+
+import sys
+
+length = 21
+
+dp = [[[1 for _ in range(length)] for _ in range(length)] for _ in range(length)]
+
+for i in range(1, length):
+    for j in range(1, length):
+        for k in range(1, length):
+            if i < j < k:
+                dp[i][j][k] = dp[i][j][k - 1] + dp[i][j - 1][k - 1] - dp[i][j - 1][k]
+            else:
+                dp[i][j][k] = (
+                    dp[i - 1][j][k]
+                    + dp[i - 1][j - 1][k]
+                    + dp[i - 1][j][k - 1]
+                    - dp[i - 1][j - 1][k - 1]
+                )
+
+while True:
+    line = sys.stdin.readline()
+    if line == "-1 -1 -1\n":
+        break
+
+    a, b, c = list(map(int, line.split()))
+    if a <= 0 or b <= 0 or c <= 0:
+        print(f"w({a}, {b}, {c}) = 1")
+    elif a > 20 or b > 20 or c > 20:
+        print(f"w({a}, {b}, {c}) = {dp[20][20][20]}")
+    else:
+        print(f"w({a}, {b}, {c}) = {dp[a][b][c]}")
