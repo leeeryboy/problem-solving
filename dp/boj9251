@@ -1,0 +1,20 @@
+# LCS
+
+import sys
+
+str1 = input()
+str2 = input()
+
+str1len = len(str1)
+str2len = len(str2)
+
+dp = [[0 for _ in range(str2len + 1)] for _ in range(str1len + 1)]
+
+for i in range(str1len):
+    for j in range(str2len):
+        if str1[i] == str2[j]:
+            dp[i + 1][j + 1] = dp[i][j] + 1
+        else:
+            dp[i + 1][j + 1] = max(dp[i + 1][j], dp[i][j + 1])
+
+print(dp[str1len][str2len])
