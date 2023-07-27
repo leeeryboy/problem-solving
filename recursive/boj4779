@@ -1,0 +1,22 @@
+# 칸토어 집합
+
+import sys
+
+
+def cantor(str):
+    length = len(str) // 3
+    if length < 1:
+        return str
+    left = cantor(str[:length])
+    middle = " " * length
+    right = cantor(str[length * 2 :])
+
+    return left + middle + right
+
+
+nums = sys.stdin.readlines()
+for n in nums:
+    n = int(n)
+    str = "-" * (3**n)
+    ans = cantor(str)
+    print(ans)
