@@ -1,0 +1,6 @@
+# 단어의 개수
+
+import sys
+
+strs = input().strip().split()
+print(len(strs))
