@@ -1,0 +1,12 @@
+# 문자열 반복
+
+import sys
+
+n = int(input())
+for _ in range(n):
+    r, str = sys.stdin.readline().split()
+    r = int(r)
+    length = len(str)
+    for i in range(length):
+        print(str[i] * r, end="")
+    print()
