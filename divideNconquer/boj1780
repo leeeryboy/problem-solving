@@ -1,0 +1,47 @@
+# 종이의 개수
+
+import sys
+
+n = int(input())
+
+arr = []
+
+for _ in range(n):
+    arr.append(list(map(int, sys.stdin.readline().split())))
+
+answer = [0] * 3
+
+
+def solve(arr, row_start, row_end, col_start, col_end):
+    global answer
+    standard = arr[row_start][col_start]
+    for i in range(row_start, row_end):
+        for j in range(col_start, col_end):
+            if arr[i][j] != standard:
+                mid_row1 = (row_start * 2 + row_end) // 3
+                mid_row2 = (row_start + row_end * 2) // 3
+                mid_col1 = (col_start * 2 + col_end) // 3
+                mid_col2 = (col_start + col_end * 2) // 3
+                solve(arr, row_start, mid_row1, col_start, mid_col1)
+                solve(arr, mid_row1, mid_row2, col_start, mid_col1)
+                solve(arr, mid_row2, row_end, col_start, mid_col1)
+                solve(arr, row_start, mid_row1, mid_col1, mid_col2)
+                solve(arr, mid_row1, mid_row2, mid_col1, mid_col2)
+                solve(arr, mid_row2, row_end, mid_col1, mid_col2)
+                solve(arr, row_start, mid_row1, mid_col2, col_end)
+                solve(arr, mid_row1, mid_row2, mid_col2, col_end)
+                solve(arr, mid_row2, row_end, mid_col2, col_end)
+                return
+    if standard == -1:
+        answer[0] += 1
+    elif standard == 0:
+        answer[1] += 1
+    else:
+        answer[2] += 1
+    return
+
+
+solve(arr, 0, n, 0, n)
+
+for i in range(3):
+    print(answer[i])
