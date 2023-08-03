@@ -1,0 +1,29 @@
+# 행렬 곱셈
+
+import sys
+
+n, m = list(map(int, sys.stdin.readline().split()))
+
+matrix1 = []
+
+for _ in range(n):
+    matrix1.append(list(map(int, sys.stdin.readline().split())))
+
+m, k = list(map(int, sys.stdin.readline().split()))
+
+matrix2 = []
+
+for _ in range(m):
+    matrix2.append(list(map(int, sys.stdin.readline().split())))
+
+answer = [[0 for _ in range(k)] for _ in range(n)]
+
+for i in range(n):
+    for j in range(k):
+        for l in range(m):
+            answer[i][j] += matrix1[i][l] * matrix2[l][j]
+
+for i in range(n):
+    for j in range(k):
+        print(answer[i][j], end=" ")
+    print()
