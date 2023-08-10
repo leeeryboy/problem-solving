@@ -1,0 +1,32 @@
+import sys
+
+n, m = sys.stdin.readline().split()
+n = int(n)
+m = int(m)
+
+my_lectures = []
+
+for _ in range(n):
+    my_lectures.append(list(map(int, sys.stdin.readline().split())))
+
+answers = []
+
+for _ in range(m):
+    lecture = list(map(int, sys.stdin.readline().split()))
+    isAnswer = True
+    for i in range(n):
+        if my_lectures[i][1] != lecture[1]:
+            continue
+        if my_lectures[i][2] > lecture[3] or my_lectures[i][3] < lecture[2]:
+            continue
+        isAnswer = False
+    if isAnswer:
+        answers.append(lecture)
+
+answers = sorted(answers, key=lambda x: (x[1], x[2], x[3], x[0]))
+
+if not answers:
+    print("0")
+
+for answer in answers:
+    print(answer[0])
