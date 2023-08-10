@@ -1,0 +1,21 @@
+# 영단어 암기는 괴로워
+
+import sys
+
+n, m = map(int, sys.stdin.readline().split())
+
+words = {}
+
+for _ in range(n):
+    word = sys.stdin.readline().rstrip()
+    if len(word) < m:
+        continue
+    if words.get(word):
+        words[word][0] += 1
+    else:
+        words[word] = [1, len(word), word]
+
+words = sorted(words.items(), key=lambda x: (-x[1][0], -x[1][1], x[1][2]))
+
+for word in words:
+    print(word[0])
