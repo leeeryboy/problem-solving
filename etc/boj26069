@@ -1,0 +1,15 @@
+# 붙임성 좋은 총총이
+
+import sys
+
+n = int(sys.stdin.readline())
+
+dancing = {"ChongChong"}
+
+for _ in range(n):
+    person1, person2 = sys.stdin.readline().split()
+    if person1 in dancing or person2 in dancing:
+        dancing.add(person1)
+        dancing.add(person2)
+
+print(len(dancing))
