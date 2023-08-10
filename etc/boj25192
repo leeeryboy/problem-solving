@@ -1,0 +1,19 @@
+# 인사성 밝은 곰곰이
+
+import sys
+
+n = int(sys.stdin.readline())
+
+nicknames = set()
+count = 0
+
+for _ in range(n):
+    line = sys.stdin.readline()
+    if line == "ENTER\n":
+        nicknames.clear()
+    else:
+        if line not in nicknames:
+            count += 1
+            nicknames.add(line)
+
+print(count)
