@@ -1,0 +1,15 @@
+# 벌집
+
+n = int(input())
+
+i = 1
+answer = 1
+
+while True:
+  if n <= i:
+    break
+  else:
+    i += answer*6
+    answer += 1
+
+print(answer)
