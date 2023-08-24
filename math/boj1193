@@ -1,0 +1,23 @@
+# 분수찾기
+
+n = int(input())
+
+i = 1
+answer = 2
+remainder = 0
+
+while True:
+  if n <= i:
+    remainder = i - n
+    break
+  else:
+    i += answer
+    answer += 1
+
+numerator = 1 + remainder
+denominator = answer - 1 - remainder
+
+if answer%2 == 0:
+  print(f"{numerator}/{denominator}")
+else:
+  print(f"{denominator}/{numerator}")
