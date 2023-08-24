@@ -1,0 +1,22 @@
+# 삼각형과 세 변
+
+import sys
+
+while True:
+  line = sys.stdin.readline()
+  if line == "0 0 0\n":
+    break
+
+  nums = list(map(int,line.split()))
+
+  nums.sort(reverse=True)
+  
+  if nums[0] >= nums[1] + nums[2]:
+    print("Invalid")
+  elif nums[0] == nums[1] == nums[2]:
+    print("Equilateral")
+  elif nums[0] == nums[1] or nums[1] == nums[2]:
+    print("Isosceles")
+  elif nums[0] != nums[1] and nums[1] != nums[2]:
+    print("Scalene")
+
