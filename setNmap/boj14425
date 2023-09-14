@@ -1,0 +1,12 @@
+# 문자열 집합
+
+import sys
+
+n, m = map(int, sys.stdin.readline().split())
+s = {sys.stdin.readline(): True for _ in range(n)}
+ans = 0
+for _ in range(m):
+    a = sys.stdin.readline()
+    if s.get(a) != None:
+        ans += 1
+print(ans)
